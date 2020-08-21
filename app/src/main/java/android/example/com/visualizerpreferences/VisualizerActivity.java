@@ -66,14 +66,14 @@ public class VisualizerActivity extends AppCompatActivity
         if (key.equals(getString(R.string.pref_show_bass_key))) {
             mVisualizerView.setShowBass(
                     sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_bass_default)));
-        }
-        else if (key.equals(getString(R.string.pref_show_mid_range_key))) {
+        } else if (key.equals(getString(R.string.pref_show_mid_range_key))) {
             mVisualizerView.setShowMid(
                     sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_mid_range_default)));
-        }
-        else if (key.equals(getString(R.string.pref_show_treble_key))) {
+        } else if (key.equals(getString(R.string.pref_show_treble_key))) {
             mVisualizerView.setShowTreble(
                     sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_treble_default)));
+        } else if (key.equals(getString(R.string.pref_color_key))) {
+            loadColorFromPreferences(sharedPreferences);
         }
     }
 
@@ -95,10 +95,15 @@ public class VisualizerActivity extends AppCompatActivity
         mVisualizerView.setShowTreble(sharedPreferences.getBoolean(getString(R.string.pref_show_treble_key),
                 getResources().getBoolean(R.bool.pref_show_treble_default)));
         mVisualizerView.setMinSizeScale(1);
-        mVisualizerView.setColor(getString(R.string.pref_color_red_value));
+
+        loadColorFromPreferences(sharedPreferences);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
+    private void loadColorFromPreferences(SharedPreferences sharedPreferences) {
+        mVisualizerView.setColor(sharedPreferences
+                .getString(getString(R.string.pref_color_key), getString(R.string.pref_color_red_value)));
+    }
     /**
      * Below this point is code you do not need to modify; it deals with permissions
      * and starting/cleaning up the AudioInputReader
