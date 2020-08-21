@@ -23,6 +23,11 @@
     <string name="pref_color_label_green">Green</string>
 
     <string name="pref_color_key" translatable="false">color</string>
+
+    <string name="pref_size_default" translatable="false"> 1 </string>
+    <string name="pref_size_key" translatable="false">size</string>
+    <string name="pref_size_label">Size Multiplier</string>
+
     <!-- Value in SharedPreferences for red color option -->
     <string name="pref_color_red_value" translatable="false">red</string>
 
